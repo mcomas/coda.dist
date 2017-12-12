@@ -92,6 +92,11 @@ expected_montecarlo_01 <- function(x, mu_ilr, sigma_ilr, Z, mu_exp) {
 }
 
 #' @export
+expected_montecarlo_centered <- function(x, mu_ilr, sigma_ilr, Z, mu_exp) {
+    .Call('_coda_dist_expected_montecarlo_centered', PACKAGE = 'coda.dist', x, mu_ilr, sigma_ilr, Z, mu_exp)
+}
+
+#' @export
 expected_montecarlo_02 <- function(x, mu_ilr, sigma_ilr, Z, mu_exp, var_exp) {
     .Call('_coda_dist_expected_montecarlo_02', PACKAGE = 'coda.dist', x, mu_ilr, sigma_ilr, Z, mu_exp, var_exp)
 }

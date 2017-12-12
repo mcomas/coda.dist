@@ -235,6 +235,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// expected_montecarlo_centered
+Rcpp::List expected_montecarlo_centered(arma::vec x, arma::vec mu_ilr, arma::mat sigma_ilr, arma::mat Z, arma::vec mu_exp);
+RcppExport SEXP _coda_dist_expected_montecarlo_centered(SEXP xSEXP, SEXP mu_ilrSEXP, SEXP sigma_ilrSEXP, SEXP ZSEXP, SEXP mu_expSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type mu_ilr(mu_ilrSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type sigma_ilr(sigma_ilrSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type Z(ZSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type mu_exp(mu_expSEXP);
+    rcpp_result_gen = Rcpp::wrap(expected_montecarlo_centered(x, mu_ilr, sigma_ilr, Z, mu_exp));
+    return rcpp_result_gen;
+END_RCPP
+}
 // expected_montecarlo_02
 arma::mat expected_montecarlo_02(arma::vec x, arma::vec mu_ilr, arma::mat sigma_ilr, arma::mat Z, arma::vec mu_exp, double var_exp);
 RcppExport SEXP _coda_dist_expected_montecarlo_02(SEXP xSEXP, SEXP mu_ilrSEXP, SEXP sigma_ilrSEXP, SEXP ZSEXP, SEXP mu_expSEXP, SEXP var_expSEXP) {
@@ -442,6 +457,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_coda_dist_lpnm_join_no_constant", (DL_FUNC) &_coda_dist_lpnm_join_no_constant, 5},
     {"_coda_dist_expected_hermite", (DL_FUNC) &_coda_dist_expected_hermite, 4},
     {"_coda_dist_expected_montecarlo_01", (DL_FUNC) &_coda_dist_expected_montecarlo_01, 5},
+    {"_coda_dist_expected_montecarlo_centered", (DL_FUNC) &_coda_dist_expected_montecarlo_centered, 5},
     {"_coda_dist_expected_montecarlo_02", (DL_FUNC) &_coda_dist_expected_montecarlo_02, 6},
     {"_coda_dist_expected_montecarlo_03", (DL_FUNC) &_coda_dist_expected_montecarlo_03, 6},
     {"_coda_dist_expected_montecarlo_04", (DL_FUNC) &_coda_dist_expected_montecarlo_04, 6},
