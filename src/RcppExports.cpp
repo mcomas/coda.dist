@@ -191,70 +191,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// ldnormal
-arma::vec ldnormal(arma::mat H, arma::vec mu, arma::mat inv_sigma);
-RcppExport SEXP _coda_dist_ldnormal(SEXP HSEXP, SEXP muSEXP, SEXP inv_sigmaSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::mat >::type H(HSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type mu(muSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type inv_sigma(inv_sigmaSEXP);
-    rcpp_result_gen = Rcpp::wrap(ldnormal(H, mu, inv_sigma));
-    return rcpp_result_gen;
-END_RCPP
-}
-// lpmultinomial_const
-double lpmultinomial_const(arma::vec x);
-RcppExport SEXP _coda_dist_lpmultinomial_const(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(lpmultinomial_const(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// lpmultinomial
-double lpmultinomial(arma::vec x, arma::vec p, double lconst);
-RcppExport SEXP _coda_dist_lpmultinomial(SEXP xSEXP, SEXP pSEXP, SEXP lconstSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type p(pSEXP);
-    Rcpp::traits::input_parameter< double >::type lconst(lconstSEXP);
-    rcpp_result_gen = Rcpp::wrap(lpmultinomial(x, p, lconst));
-    return rcpp_result_gen;
-END_RCPP
-}
-// lpnm_join
-arma::mat lpnm_join(arma::vec x, arma::vec mu, arma::mat inv_sigma, arma::mat P, arma::mat H);
-RcppExport SEXP _coda_dist_lpnm_join(SEXP xSEXP, SEXP muSEXP, SEXP inv_sigmaSEXP, SEXP PSEXP, SEXP HSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type mu(muSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type inv_sigma(inv_sigmaSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type P(PSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type H(HSEXP);
-    rcpp_result_gen = Rcpp::wrap(lpnm_join(x, mu, inv_sigma, P, H));
-    return rcpp_result_gen;
-END_RCPP
-}
-// lpmultinomial_mult
-arma::vec lpmultinomial_mult(arma::mat P, arma::vec x);
-RcppExport SEXP _coda_dist_lpmultinomial_mult(SEXP PSEXP, SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::mat >::type P(PSEXP);
-    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(lpmultinomial_mult(P, x));
-    return rcpp_result_gen;
-END_RCPP
-}
 // lpnm_join_no_constant
 double lpnm_join_no_constant(arma::vec x, arma::vec mu, arma::mat inv_sigma, arma::vec p, arma::vec h);
 RcppExport SEXP _coda_dist_lpnm_join_no_constant(SEXP xSEXP, SEXP muSEXP, SEXP inv_sigmaSEXP, SEXP pSEXP, SEXP hSEXP) {
@@ -422,6 +358,70 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// ldnormal
+arma::vec ldnormal(arma::mat H, arma::vec mu, arma::mat inv_sigma);
+RcppExport SEXP _coda_dist_ldnormal(SEXP HSEXP, SEXP muSEXP, SEXP inv_sigmaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type H(HSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type inv_sigma(inv_sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(ldnormal(H, mu, inv_sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// lpmultinomial_const
+double lpmultinomial_const(arma::vec x);
+RcppExport SEXP _coda_dist_lpmultinomial_const(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(lpmultinomial_const(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// lpmultinomial
+double lpmultinomial(arma::vec x, arma::vec p, double lconst);
+RcppExport SEXP _coda_dist_lpmultinomial(SEXP xSEXP, SEXP pSEXP, SEXP lconstSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type p(pSEXP);
+    Rcpp::traits::input_parameter< double >::type lconst(lconstSEXP);
+    rcpp_result_gen = Rcpp::wrap(lpmultinomial(x, p, lconst));
+    return rcpp_result_gen;
+END_RCPP
+}
+// lpnm_join
+arma::mat lpnm_join(arma::vec x, arma::vec mu, arma::mat inv_sigma, arma::mat P, arma::mat H);
+RcppExport SEXP _coda_dist_lpnm_join(SEXP xSEXP, SEXP muSEXP, SEXP inv_sigmaSEXP, SEXP PSEXP, SEXP HSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type inv_sigma(inv_sigmaSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type P(PSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type H(HSEXP);
+    rcpp_result_gen = Rcpp::wrap(lpnm_join(x, mu, inv_sigma, P, H));
+    return rcpp_result_gen;
+END_RCPP
+}
+// lpmultinomial_mult
+arma::vec lpmultinomial_mult(arma::mat P, arma::vec x);
+RcppExport SEXP _coda_dist_lpmultinomial_mult(SEXP PSEXP, SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type P(PSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(lpmultinomial_mult(P, x));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_coda_dist_ilr_basis", (DL_FUNC) &_coda_dist_ilr_basis, 1},
@@ -439,11 +439,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_coda_dist_hermite_integration", (DL_FUNC) &_coda_dist_hermite_integration, 2},
     {"_coda_dist_gaussian_hermite", (DL_FUNC) &_coda_dist_gaussian_hermite, 3},
     {"_coda_dist_hermite", (DL_FUNC) &_coda_dist_hermite, 1},
-    {"_coda_dist_ldnormal", (DL_FUNC) &_coda_dist_ldnormal, 3},
-    {"_coda_dist_lpmultinomial_const", (DL_FUNC) &_coda_dist_lpmultinomial_const, 1},
-    {"_coda_dist_lpmultinomial", (DL_FUNC) &_coda_dist_lpmultinomial, 3},
-    {"_coda_dist_lpnm_join", (DL_FUNC) &_coda_dist_lpnm_join, 5},
-    {"_coda_dist_lpmultinomial_mult", (DL_FUNC) &_coda_dist_lpmultinomial_mult, 2},
     {"_coda_dist_lpnm_join_no_constant", (DL_FUNC) &_coda_dist_lpnm_join_no_constant, 5},
     {"_coda_dist_expected_hermite", (DL_FUNC) &_coda_dist_expected_hermite, 4},
     {"_coda_dist_expected_montecarlo_01", (DL_FUNC) &_coda_dist_expected_montecarlo_01, 5},
@@ -455,6 +450,11 @@ static const R_CallMethodDef CallEntries[] = {
     {"_coda_dist_mvf_deriv2", (DL_FUNC) &_coda_dist_mvf_deriv2, 6},
     {"_coda_dist_alr_basis", (DL_FUNC) &_coda_dist_alr_basis, 1},
     {"_coda_dist_mvf_maximum", (DL_FUNC) &_coda_dist_mvf_maximum, 7},
+    {"_coda_dist_ldnormal", (DL_FUNC) &_coda_dist_ldnormal, 3},
+    {"_coda_dist_lpmultinomial_const", (DL_FUNC) &_coda_dist_lpmultinomial_const, 1},
+    {"_coda_dist_lpmultinomial", (DL_FUNC) &_coda_dist_lpmultinomial, 3},
+    {"_coda_dist_lpnm_join", (DL_FUNC) &_coda_dist_lpnm_join, 5},
+    {"_coda_dist_lpmultinomial_mult", (DL_FUNC) &_coda_dist_lpmultinomial_mult, 2},
     {NULL, NULL, 0}
 };
 

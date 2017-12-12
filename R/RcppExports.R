@@ -77,31 +77,6 @@ hermite <- function(order) {
 }
 
 #' @export
-ldnormal <- function(H, mu, inv_sigma) {
-    .Call('_coda_dist_ldnormal', PACKAGE = 'coda.dist', H, mu, inv_sigma)
-}
-
-#' @export
-lpmultinomial_const <- function(x) {
-    .Call('_coda_dist_lpmultinomial_const', PACKAGE = 'coda.dist', x)
-}
-
-#' @export
-lpmultinomial <- function(x, p, lconst) {
-    .Call('_coda_dist_lpmultinomial', PACKAGE = 'coda.dist', x, p, lconst)
-}
-
-#' @export
-lpnm_join <- function(x, mu, inv_sigma, P, H) {
-    .Call('_coda_dist_lpnm_join', PACKAGE = 'coda.dist', x, mu, inv_sigma, P, H)
-}
-
-#' @export
-lpmultinomial_mult <- function(P, x) {
-    .Call('_coda_dist_lpmultinomial_mult', PACKAGE = 'coda.dist', P, x)
-}
-
-#' @export
 lpnm_join_no_constant <- function(x, mu, inv_sigma, p, h) {
     .Call('_coda_dist_lpnm_join_no_constant', PACKAGE = 'coda.dist', x, mu, inv_sigma, p, h)
 }
@@ -152,5 +127,30 @@ alr_basis <- function(K) {
 #' @export
 mvf_maximum <- function(x, mu_ilr, sigma_ilr, B, eps, max_iter, prop) {
     .Call('_coda_dist_mvf_maximum', PACKAGE = 'coda.dist', x, mu_ilr, sigma_ilr, B, eps, max_iter, prop)
+}
+
+#' @export
+ldnormal <- function(H, mu, inv_sigma) {
+    .Call('_coda_dist_ldnormal', PACKAGE = 'coda.dist', H, mu, inv_sigma)
+}
+
+#' @export
+lpmultinomial_const <- function(x) {
+    .Call('_coda_dist_lpmultinomial_const', PACKAGE = 'coda.dist', x)
+}
+
+#' @export
+lpmultinomial <- function(x, p, lconst) {
+    .Call('_coda_dist_lpmultinomial', PACKAGE = 'coda.dist', x, p, lconst)
+}
+
+#' @export
+lpnm_join <- function(x, mu, inv_sigma, P, H) {
+    .Call('_coda_dist_lpnm_join', PACKAGE = 'coda.dist', x, mu, inv_sigma, P, H)
+}
+
+#' @export
+lpmultinomial_mult <- function(P, x) {
+    .Call('_coda_dist_lpmultinomial_mult', PACKAGE = 'coda.dist', P, x)
 }
 

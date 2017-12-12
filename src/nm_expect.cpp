@@ -87,6 +87,53 @@ Rcpp::List expected_montecarlo_01(arma::vec x, arma::vec mu_ilr, arma::mat sigma
   return(Rcpp::List::create(M0, M1, M2));
 }
 
+// //' @export
+// // [[Rcpp::export]]
+// Rcpp::List expected_montecarlo_centered(arma::vec x, arma::vec mu_ilr, arma::mat sigma_ilr, arma::mat Z,
+//                                arma::vec mu_exp){ //, double var_exp){
+//
+//   int K = x.size();
+//   int k = K - 1;
+//   int nsim = Z.n_rows;
+//
+//   arma::mat inv_sigma = inv_sympd(sigma_ilr);
+//
+//   arma::vec sampling_mu =  mu_exp;
+//   arma::mat SAMPLING_MU = arma::repmat(sampling_mu.t(), nsim, 1);
+//
+//   arma::mat sampling_sigma = sigma_ilr;
+//   arma::mat sampling_inv_sigma = inv_sigma;
+//   arma::mat sampling_sigma_chol = arma::chol(sampling_sigma);
+//
+//   //arma::mat mu12 = 0.5 * (sampling_mu.t() * inv_sigma * sampling_mu - mu_ilr.t() * inv_sigma * mu_ilr);
+//   arma::mat D = inv_sigma * (mu_ilr-sampling_mu);
+//
+//   //double mult_const = lpmultinomial_const(x);
+//
+//   double M0 = 0;
+//   arma::vec M1 = arma::vec(k);
+//   arma::mat M2 = arma::mat(k,k);
+//   M1.zeros();M2.zeros();
+//   arma::mat Hs = SAMPLING_MU + Z * sampling_sigma_chol;
+//   arma::mat Ps = inv_ilr_coordinates(Hs);
+//   arma::vec loglik = lpmultinomial_mult(Ps, x) + Hs * D; //mu12(0,0) +
+//   double cmax = max(loglik);
+//
+//   arma::vec lik = exp(loglik - cmax);
+//   arma::vec lik_st = lik / mean(lik);
+//
+//   M0 += mean(lik);
+//   for(int i = 0;i < k; i++){
+//     M1(i) += mean( Hs.col(i) % lik_st );
+//   }
+//   for(int i = 0;i < k; i++){
+//     for(int j = 0;j < k; j++){
+//       M2(i,j) += mean( (Hs.col(i) - M1(i)) % (Hs.col(j) - M1(j)) % lik_st );
+//     }
+//   }
+//   return(Rcpp::List::create(M0, M1, M2));
+// }
+
 //' @export
 // [[Rcpp::export]]
 arma::mat expected_montecarlo_02(arma::vec x, arma::vec mu_ilr, arma::mat sigma_ilr, arma::mat Z,
