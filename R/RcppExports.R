@@ -116,6 +116,11 @@ expected_metropolis <- function(x, mu_ilr, sigma_ilr, mu_exp, nsim, ignored_step
     .Call('_coda_dist_expected_metropolis', PACKAGE = 'coda.dist', x, mu_ilr, sigma_ilr, mu_exp, nsim, ignored_steps)
 }
 
+#' @export
+metropolis_sample <- function(x, mu_ilr, sigma_ilr, x0, nsim, ignored_steps = 100L) {
+    .Call('_coda_dist_metropolis_sample', PACKAGE = 'coda.dist', x, mu_ilr, sigma_ilr, x0, nsim, ignored_steps)
+}
+
 mvf_deriv <- function(I, a, mu, inv_sigma, x) {
     .Call('_coda_dist_mvf_deriv', PACKAGE = 'coda.dist', I, a, mu, inv_sigma, x)
 }

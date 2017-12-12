@@ -340,4 +340,65 @@ Rcpp::List expected_metropolis(arma::vec x, arma::vec mu_ilr, arma::mat sigma_il
   return(Rcpp::List::create(M0, M1, M2));
 }
 
+//' @export
+// [[Rcpp::export]]
+arma::mat metropolis_sample(arma::vec x, arma::vec mu_ilr, arma::mat sigma_ilr, arma::vec x0,
+                            int nsim, int ignored_steps = 100){
+  int maxZ = 10000;
+  int maxU = 10000;
 
+  int K = x.size();
+  int k = K - 1;
+
+  arma::mat Z = arma::randn(k, maxZ);
+  arma::vec U = arma::randu(maxU);
+
+  arma::mat inv_sigma = inv_sympd(sigma_ilr);
+  arma::mat B = ilr_basis(K);
+
+  // initialisation
+  arma::vec h = x0, h_proposal;
+  arma::vec p = exp(B * h), p_proposal;
+
+  double f = lpnm_join_no_constant(x, mu_ilr, inv_sigma, p / arma::accu(p), h);
+
+  int irand_z = 0, irand_u = 0, step = 0, nsim_real = 0;
+  bool repeat = true;
+
+  arma::mat X = arma::mat(k, nsim);
+
+  for(int i = 0; i < nsim; i++){
+    for(int j = 0; j < ignored_steps; j++){
+      h_proposal = h + Z.col(irand_z++);
+      p_proposal = exp(B * h_proposal);
+      double f_proposal = lpnm_join_no_constant(x, mu_ilr, inv_sigma,
+                                                p_proposal / arma::accu(p_proposal), h_proposal);
+
+      double cmean = 0.5 * f_proposal + 0.5 * f;
+      double alpha = exp(f_proposal-cmean) / exp(f-cmean);
+      if(1 < alpha){
+        f = f_proposal;
+        h = h_proposal;
+      }else{
+        if(U(irand_u++) < alpha){
+          f = f_proposal;
+          h = h_proposal;
+        }else{
+          f = f;
+          h = h;
+        }
+      }
+      if(irand_z == maxZ){
+        Z = arma::randn(k, maxZ);
+        irand_z = 0;
+      }
+      if(irand_u == maxU){
+        U = arma::randu(maxU);
+        irand_u = 0;
+      }
+    }
+
+    X.col(i) = h;
+  }
+  return(X.t());
+}

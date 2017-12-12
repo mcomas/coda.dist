@@ -314,6 +314,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// metropolis_sample
+arma::mat metropolis_sample(arma::vec x, arma::vec mu_ilr, arma::mat sigma_ilr, arma::vec x0, int nsim, int ignored_steps);
+RcppExport SEXP _coda_dist_metropolis_sample(SEXP xSEXP, SEXP mu_ilrSEXP, SEXP sigma_ilrSEXP, SEXP x0SEXP, SEXP nsimSEXP, SEXP ignored_stepsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type mu_ilr(mu_ilrSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type sigma_ilr(sigma_ilrSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type x0(x0SEXP);
+    Rcpp::traits::input_parameter< int >::type nsim(nsimSEXP);
+    Rcpp::traits::input_parameter< int >::type ignored_steps(ignored_stepsSEXP);
+    rcpp_result_gen = Rcpp::wrap(metropolis_sample(x, mu_ilr, sigma_ilr, x0, nsim, ignored_steps));
+    return rcpp_result_gen;
+END_RCPP
+}
 // mvf_deriv
 double mvf_deriv(int I, arma::vec a, arma::vec mu, arma::mat inv_sigma, arma::vec x);
 RcppExport SEXP _coda_dist_mvf_deriv(SEXP ISEXP, SEXP aSEXP, SEXP muSEXP, SEXP inv_sigmaSEXP, SEXP xSEXP) {
@@ -462,6 +478,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_coda_dist_expected_montecarlo_03", (DL_FUNC) &_coda_dist_expected_montecarlo_03, 6},
     {"_coda_dist_expected_montecarlo_04", (DL_FUNC) &_coda_dist_expected_montecarlo_04, 6},
     {"_coda_dist_expected_metropolis", (DL_FUNC) &_coda_dist_expected_metropolis, 6},
+    {"_coda_dist_metropolis_sample", (DL_FUNC) &_coda_dist_metropolis_sample, 6},
     {"_coda_dist_mvf_deriv", (DL_FUNC) &_coda_dist_mvf_deriv, 5},
     {"_coda_dist_mvf_deriv2", (DL_FUNC) &_coda_dist_mvf_deriv2, 6},
     {"_coda_dist_alr_basis", (DL_FUNC) &_coda_dist_alr_basis, 1},
